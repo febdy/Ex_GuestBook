@@ -1,5 +1,8 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="com.javaex.dao.GuestBookDao" %>
+<%@ page import="com.javaex.vo.GuestVo" %>
+<%@ page import="java.util.List" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -26,19 +29,31 @@
 	</form>
 	<br />
 
+	<% 
+		GuestBookDao dao = new GuestBookDao();
+		List<GuestVo> gList = dao.getList();
+		
+		for(GuestVo gVo : gList){
+			int no = gVo.getNo();
+			String name = gVo.getName();
+			String content = gVo.getContent();
+			String date = gVo.getDate();
+		
+	%>
+		<table width=510 border=1>
+			<tr>
+				<td><%=no %></td>
+				<td><%=name %></td>
+				<td><%=date %></td>
+				<td><a href="deleteform.jsp?no=">삭제</a></td>
+			</tr>
+			<tr>
+				<td colspan=4><%=content %></td>
+			</tr>
+		</table>
+		<br />
 
-	<table width=510 border=1>
-		<tr>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td><a href="deleteform.jsp?no=">삭제</a></td>
-		</tr>
-		<tr>
-			<td colspan=4></td>
-		</tr>
-	</table>
-	<br />
+	<% } %>
 
 </body>
 </html>

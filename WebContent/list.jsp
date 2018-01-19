@@ -45,7 +45,7 @@
 				<td><%=no %></td>
 				<td><%=name %></td>
 				<td><%=date %></td>
-				<td><a href="deleteform.jsp?no=">삭제</a></td>
+				<td><a href="deleteform.jsp?no=<%=no %>">삭제</a></td>
 			</tr>
 			<tr>
 				<td colspan=4><%=content %></td>
